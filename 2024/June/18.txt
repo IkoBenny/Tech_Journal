@@ -1,0 +1,25 @@
+----------------------------------------------------------- (Suggested Content)
+=========================================================== (Key Concepts)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Tech-Stack)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+Node.js v21.4.0 node -v
+TypeScript Version 5.4.5 tsc -v
+
+===========================================================
+.mjs file extension
+.cjs file extension
+package.json
+tsconfig.json
+import keyword 
+export keyword
+npm install --save-dev
+npm install -g
+CommonJS modules
+ECMAScript modules
+
+-----------------------------------------------------------
+The Difference Between MJS, CJS, and JS Files in Node.js : https://codingforseo.com/blog/mjs-vs-cjs-files/
+Modules: CommonJS modules | Node.js v22.3.0 Documentation : https://nodejs.org/docs/latest/api/modules.html
+module.exports – How to Export in Node.js and JavaScript : https://www.freecodecamp.org/news/module-exports-how-to-export-in-node-js-and-javascript/
+export - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
