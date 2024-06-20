@@ -1,0 +1,28 @@
+----------------------------------------------------------- (Suggested Content)
+=========================================================== (Key Concepts)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Tech-Stack)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+Node.js Version 21.4.0 node -v
+TypeScript Version 5.4.5 tsc -v
+Next.js
+
+=========================================================== 
+
+What is Next.js
+What is Babel
+Setting up a Next.js development server
+Next.js vs Node.js
+npm run build
+How to use styles in React
+How to add React to an existing project
+What is Vite?
+
+----------------------------------------------------------- 
+
+Installation : https://nextjs.org/docs/getting-started/installation
+Next.js vs Node.js: A Detailed Comparison : https://www.restack.io/docs/nextjs-knowledge-nextjs-vs-nodejs-comparison
+How to use styles in React: Inline styles, CSS Modules & Styled Components : https://malcoded.com/posts/react-component-style/
+Add React to an Existing Project : https://react.dev/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page
+@babel/plugin-transform-react-jsx : https://babeljs.io/docs/babel-plugin-transform-react-jsx
+Deploying : https://nextjs.org/docs/app/building-your-application/deploying#nodejs-server
