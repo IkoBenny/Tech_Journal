@@ -1,0 +1,22 @@
+----------------------------------------------------------- (Suggested Content)
+=========================================================== (Key Concepts)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Tech-Stack)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+Next.js
+
+=========================================================== 
+
+App vs. Pages Router
+Components
+.js vs .jsx vs .tsx file extensions
+Pages, Layouts, Nesting Layouts and the Root Layout
+The relationship between JSX and React
+
+-----------------------------------------------------------
+
+Pages and Layouts : https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#layouts
+Routing Fundamentals : https://nextjs.org/docs/app/building-your-application/routing
+Installation : https://nextjs.org/docs/getting-started/installation
+Writing Markup with JSX : https://react.dev/learn/writing-markup-with-jsx
+Introducing JSX : https://legacy.reactjs.org/docs/introducing-jsx.html

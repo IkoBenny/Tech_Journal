@@ -1,0 +1,21 @@
+----------------------------------------------------------- (Suggested Content)
+=========================================================== (Key Concepts)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Tech-Stack)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+Express.js
+Next.js
+
+=========================================================== 
+
+Next.js vs Express.js
+static vs dynamic web site
+Static Site Generator (SSG)
+Headless CMS (Content Management System)
+CDN vs. web server
+-----------------------------------------------------------
+
+Next.js vs. Express.js: What Are the Differences? : https://dzone.com/articles/nextjs-vs-expressjs-what-are-the-differences
+What Is a Static Website? The Absolute Beginner’s Guide : https://kinsta.com/knowledgebase/what-is-a-static-website/#:~:text=A%20static%20website%20is%20a%20website%20that%20serves,has%20no%20backend%20server-side%20processing%20and%20no%20database.
+CDN benefits: Why use a CDN? : https://www.cloudflare.com/learning/cdn/cdn-benefits/
+When you should avoid using a CDN on your website : https://medium.com/thinking-ahead/when-you-should-avoid-using-a-cdn-on-your-website-c60e7b451734

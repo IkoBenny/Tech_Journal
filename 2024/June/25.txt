@@ -1,0 +1,28 @@
+----------------------------------------------------------- (Suggested Content)
+=========================================================== (Key Concepts)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Tech-Stack)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+Next.js
+React.js
+CSS
+
+=========================================================== 
+
+Pages, Layouts, Nesting Layouts and the Root Layout
+The relationship between JSX and React
+Working with CSS Modules and React
+Using images with NextJS
+Converting Javascript project to React 
+
+-----------------------------------------------------------
+
+Describing the UI : https://react.dev/learn/describing-the-ui
+Different Ways to Write CSS in React : https://css-tricks.com/different-ways-to-write-css-in-react/
+How to use external css in ReactJS : https://www.altcademy.com/blog/how-to-use-external-css-in-reactjs/
+Image Optimization : https://nextjs.org/docs/app/building-your-application/optimizing/images
+Pages and Layouts : https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
+Server Components : https://nextjs.org/docs/app/building-your-application/rendering/server-components
+Styling and CSS : https://legacy.reactjs.org/docs/faq-styling.html
+"Syntax error: Selector "body" is not pure" and other bullshit about non-pure selectors #16050 : https://github.com/vercel/next.js/discussions/16050
+Writing Markup with JSX : https://react.dev/learn/writing-markup-with-jsx#1-return-a-single-root-element
