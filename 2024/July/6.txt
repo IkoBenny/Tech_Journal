@@ -1,0 +1,110 @@
+----------------------------------------------------------- (Suggested Content)
+=========================================================== (Key Concepts)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Tech-Stack)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+Next.js
+React.js
+CSS
+JSX
+TypeScript.js
+
+=========================================================== 
+
+My takeaways:
+
+The importance of starting, not completing projects like SpeedyTaco_Express cannot be understated. 
+Many projects are never completed, yet still define goals and objectives. 
+I spent a lot of time going back and forth with issues that I perceived were coming from chosen project structure, but
+I have a much better understanding for Next.JS, JavaScript, TypeScript, etc. because I deciced to undertake this project.
+It took an exceptionally long time to arrive at real culprit of many related compliation errors.
+
+-I decided to be overly amibitous by incorporating static typing using JavaScript/TypeScript/React.
+It helps to solve one problem at a time. It was hard to find the real problems, because I was a bit overwhelmed and I was not always sure why I had a problem. 
+
+- I was not aware of all of possibilities that I could encounter. 
+It is more important to build it right/fast to requirements, then you can always improve it later. 
+If I had defined project requirements more clearly, than I could have found an alternative solution earlier. 
+
+- We need the feature working now, we can improve the feature later. Deliver functionality ASAP. This helps you to remain motivated. 
+If possible, deliver working code statically, then adjust it to account for dynamic needs.
+For example, hard-code at first, but use config files later.
+
+-When dealing with TypeScript and JavaScript errors I think it is useful to remember that TS is a superset of JS. So many things will work, but all may not. 
+Use require() not import, for instance.
+
+-JavaScript has limitations on variable names. For example, their names can’t contain dashes or be reserved words like class. 
+TypeScript infered number from scroll-container variable name. Renaming classes using CamelCase was helpful.
+The problem I thought I had with a module not being found was, because I used TypeScript incorrectly to load modules and assign styles to object properties. It was not in relation to Next.
+
+-By closely dissecting the error messages I was able to better build mental models to understand the complexity of the chosen tech stack.
+Asked myself question how do we load a CSS module in TypeScript? The how/why are always important. 
+
+=========================================================== 
+
+Scripts and modules in JavaScript
+In the early days of JavaScript, when the language only ran in browsers, there were no modules, but it was still possible to split the JavaScript for a web page into multiple files by using multiple script tags in HTML:
+
+<html>
+  <head>
+    <script src="a.js"></script>
+    <script src="b.js"></script>
+  </head>
+  <body></body>
+</html>
+This approach had some downsides, especially as web pages grew larger and more complex. In particular, all scripts loaded onto the same page share the same scope—appropriately called the “global scope”—meaning the scripts had to be very careful not to overwrite each others’ variables and functions.
+
+Any system that solves this problem by giving files their own scope while still providing a way to make bits of code available to other files can be called a “module system.” (It may sound obvious to say that each file in a module system is called a “module,” but the term is often used to contrast with script files, which run outside a module system, in a global scope.)
+
+=========================================================== 
+
+import sayHello from "greetings";
+sayHello("world");
+
+
+To check this file, the compiler needs to know the type of sayHello (is it a function that can accept one string argument?), which opens quite a few additional questions:
+
+Will the module system load this TypeScript file directly, or will it load a JavaScript file that I (or another compiler) generate from this TypeScript file?
+What kind of module does the module system expect to find, given the file name it will load and its location on disk?
+If output JavaScript is being emitted, how will the module syntax present in this file be transformed in the output code?
+Where will the module system look to find the module specified by "greetings"? Will the lookup succeed?
+What kind of module is the file resolved by that lookup?
+Does the module system allow the kind of module detected in (2) to reference the kind of module detected in (5) with the syntax decided in (3)?
+Once the "greetings" module has been analyzed, what piece of that module is bound to sayHello?
+
+=========================================================== 
+
+Using CSS Modules with TypeScript is not as obvious as with JavaScript. The reason is that TypeScript has special treatment for imports and if you try to use CSS Modules the same way you did in JavaScript:
+
+import s from './Button.css';
+You’ll get an error: “Cannot find module ‘./Button.css’”. There are several ways to fix that.
+
+The easy way
+You can bypass TypeScript import magic by using require instead of import:
+
+const s = require('./Button.css');
+
+===========================================================
+
+JavaScript has limitations on variable names. For example, their names can’t contain dashes or be reserved words like class.
+
+scroll-container looks like math 4-3 
+ 
+-----------------------------------------------------------
+
+How to use require in typescript : https://www.typescriptsos.com/faqs/how-to-use-require-in-typescript/
+
+JavaScript data types and data structures : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Data_types
+
+JavaScript modules : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+
+Modules - Introduction : https://www.typescriptlang.org/docs/handbook/modules/introduction.html
+
+require(id) : https://nodejs.org/api/modules.html#requireid
+
+Understanding the ‘Any’ Type in TypeScript : https://www.slingacademy.com/article/understanding-the-any-type-in-typescript/
+
+what is require(id) ?: https://stackoverflow.com/questions/9901082/what-is-require-in-javascript-and-nodejs
+
+Writing Markup with JSX : https://react.dev/learn/writing-markup-with-jsx#1-return-a-single-root-element
+
