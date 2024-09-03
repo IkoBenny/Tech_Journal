@@ -1,0 +1,164 @@
+----------------------------------------------------------- (Suggested Content)
+=========================================================== (Key Concepts)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ (Tech-Stack)
+
+
+-----------------------------------------------------------
+
+Getting Started With Hibernate - https://thorben-janssen.com/hibernate-getting-started/
+A Beginner’s Guide to JPA’s persistence.xml - https://thorben-janssen.com/jpa-persistence-xml/
+Interface EntityManagerFactory - jakartaee.github.io/persistence/latest/api/jakarta.persistence/jakarta/persistence/EntityManagerFactory.html
+Interface EntityTransaction - https://jakartaee.github.io/persistence/latest/api/jakarta.persistence/jakarta/persistence/EntityTransaction.html
+Spring Boot With SQLite - https://www.baeldung.com/spring-boot-sqlite
+PersistenceUnit vs. PersistenceContext - https://www.baeldung.com/java-persistenceunit-persistencecontext-difference
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Java
+Hibernate
+
+=========================================================== 
+
+persistence.xml file
+orm.xml
+EntityManager, EntityManagerFactory
+=========================================================== 
+
+
+The persistence.xml file defines one or more persistence units, and you can configure things like:
+
+-the name of each persistence unit,
+-which managed persistence classes are part of a persistence unit,
+-how these classes shall be mapped to database tables,
+-the persistence provider that shall be used at runtime,
+-the data source you want to use to connect to your database,
+-how to create and validate the database schema,
+-the mode of your 2nd level cache,
+-several provider-specific configuration parameters.
+
+=========================================================== 
+
+The most basic persistence.xml configuration
+
+You only need a persistence element as the root element and a persistence-unit element with a name attribute. 
+The attribute is used to identify the persistence unit, and you can use it during the bootstrapping process to instantiate a specific EntityManagerFactory.
+Usually, there is exactly one EntityManagerFactory for each persistence unit
+
+<persistence>
+    <!-- Define persistence unit -->
+    <persistence-unit name="my-persistence-unit">
+    </persistence-unit>
+</persistence>
+
+When you use this configuration, you configure a persistence unit with the name “my-persistence-unit” without defining a dependency to a specific JPA implementation. 
+
+You also rely on a list of defaults defined by the specification:
+
+-Your persistence provider scans the root of your persistence unit and adds all annotated managed persistence classes to the persistence unit.
+-If your META-INF directory contains a file called orm.xml, it gets treated as a mapping file and all included mapping information get used.
+-The used transaction-type depends on the environment in which you deploy your application. 
+-In a Jakarta EE environment, JPA expects that the container provides a JTA-compliant connection provider. 
+-In a Java SE environment, it uses a RESOURCE_LOCAL transaction instead.
+-You don’t configure any database connection. JPA, therefore, expects that you provide a datasource at runtime.
+-All JPA implementations support a set of proprietary configuration parameters. Examples for that are the logging configuration in EclipseLink JPA or Hibernate’s database dialect. As you don’t define any of them in this basic configuration, you also rely on all provider-specific defaults.
+
+===========================================================
+
+If you’re using JPA 2.x (EclipseLink <3.0, Hibernate <5.5.0), you should use the following namespaces.
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemalocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="my-persistence-unit">
+        ...
+    </persistence-unit>
+</persistence>
+
+
+ if you’re using JPA 3.x, you should use the updated namespaces.
+
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.0" xsi:schemalocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <persistence-unit name="my-persistence-unit">
+        ...
+    </persistence-unit>
+</persistence>
+
+===========================================================
+
+    <persistence-unit
+            name="my-persistence-unit"
+            transaction-type="RESOURCE_LOCAL"
+            >
+        <!-- Entity classes go here -->
+        <class>com.linkedinlearning.jpa.entity.Employee</class>
+        <class>com.linkedinlearning.jpa.entity.Company</class>
+        <class>com.linkedinlearning.jpa.entity.Salary</class>
+
+        <properties>
+            <property name="hibernate.jdbc.time_zone" value="UTC"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
+            <property name="jakarta.persistence.jdbc.user" value="newuser"/>
+            <property name="jakarta.persistence.jdbc.password" value="password"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/>
+        </properties>
+    </persistence-unit>
+
+drop-and-create means any table that was there before will be dropped and recreated anytime the application is run.
+
+
+===========================================================
+
+When you setup a new project to use JPA, then you need to configure the data store and JPA provider. 
+You will configure a datastore connector to conect to your chosen database. You will also include JPA provider. 
+
+  <dependencies>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core-jakarta</artifactId>
+            <version>5.6.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.3.1</version>
+        </dependency>
+    </dependencies>
+
+Dependencies:
+
+1. JPA
+2. JPA implementation
+3. Database
+
+
+===========================================================
+
+EntityManagerFactory emf = Persistence.createEntityManagerFactory("my-persistence-unit");
+EntityManager em = emf.createEntityManager();
+em.getTransaction().begin();
+
+You don’t need to start the transaction after you’ve created your EntityManager.
+But please be aware, that Hibernate will start and commit a transaction for each database operation if there is no active transaction. 
+In most situations, it’s better to start only one transaction. That reduces the load on the database and assures consistent reads for the duration of your transaction. 
+After you’ve done that, you can use the EntityManager to access your database by persisting, updating or removing entities. 
+You can also create database-independent queries based on your entity model.
+
+
+===========================================================
+
+Using JTA means that we delegate the work to the container. Consequently, we cannot obtain an EntityManager through the EntityManagerFactory.
+Instead, we must use an EntityManager that the container supplies and injects via the @PersistenceContext annotation.
+
+===========================================================
+
+Close an EntityManager
+After you’ve performed all database operations, you need to commit or rollback your transaction and close the EntityManager.
+
+em.getTransaction().commit();
+em.close();
